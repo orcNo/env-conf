@@ -35,14 +35,14 @@
   ],
   "outbounds": [
     {
-      "protocol": "vmess",
+      "protocol": "vless",
       "settings": {
         "vnext": [{
           "address": "tw.freeorc.club",
           "port": 1234,
           "users": [{
             "id": "3cf93153-b598-4638-b228-fd8a2054c46a",
-            "alterId": 64
+            "encryption":"none"
           }]
         }]
       }
