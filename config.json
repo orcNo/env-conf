@@ -1,0 +1,56 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 1080,
+      "listen": "127.0.0.1",
+      "tag": "socks-inbound",
+      "protocol": "socks",
+      "settings": {
+		  "auth":"noauth",
+        "udp": false,
+		"ip": "127.0.0.1"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      }
+    },
+    {
+      "protocol": "dokodemo-door",
+      "listen": "127.0.0.1",
+      "port": 60081,
+      "settings": {
+		  "network":"tcp,udp",
+		  "followRedirect": true
+	  },
+	  "streamSettings":{
+		  "sockopt":{
+			  "tproxy":"redirect"
+		  }
+	  }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [{
+          "address": "tw.freeorc.club",
+          "port": 1234,
+          "users": [{
+            "id": "3cf93153-b598-4638-b228-fd8a2054c46a",
+            "alterId": 64
+          }]
+        }]
+      }
+    },
+    {
+      "protocol": "freedom",
+      "tag": "direct",
+      "settings": {}
+    }
+  ]
+}
