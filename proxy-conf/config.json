@@ -3,21 +3,27 @@
     "loglevel": "warning"
   },
   "inbounds": [
-    {
-      "port": 1080,
-      "listen": "127.0.0.1",
-      "tag": "socks-inbound",
-      "protocol": "socks",
-      "settings": {
-		  "auth":"noauth",
-        "udp": false,
-		"ip": "127.0.0.1"
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls"]
-      }
-    },
+    //{
+    //  "port": 1080,
+    //  "listen": "127.0.0.1",
+    //  "tag": "socks-inbound",
+    //  "protocol": "socks",
+    //  "settings": {
+	//	  "auth":"noauth",
+    //    "udp": true,
+	//	"ip": "127.0.0.1"
+    //  },
+    //  "sniffing": {
+    //    "enabled": true,
+    //    "destOverride": ["http", "tls"]
+    //  }
+    //}
+	//,{
+	//	"listen":"127.0.0.1",
+	//	"port":"1081",
+	//	"protocol":"http"
+	//}
+	//,
     {
       "protocol": "dokodemo-door",
       "listen": "127.0.0.1",
@@ -39,13 +45,28 @@
       "settings": {
         "vnext": [{
           "address": "tw.freeorc.club",
-          "port": 1234,
+          "port": 443,
           "users": [{
-            "id": "3cf93153-b598-4638-b228-fd8a2054c46a",
-            "encryption":"none"
+            "id": "54c335ec-9c66-48f9-bafd-9c407503ee29",
+            "encryption":"none",
+			"level":0
           }]
         }]
-      }
+      },
+	  "streamSettings":{
+		  "network":"tcp",
+		  "security":"xtls",
+		  "xtlsSettings":{
+			  "serverName":"tw.freeorc.club",
+			  "allowInsecure":false,
+			  "alpn":[
+				  "h2",
+				  "http/1.1"
+			  ],
+			  "disableSessionResumption":true
+		  }
+	  },
+	  "tag":"proxy"
     },
     {
       "protocol": "freedom",
