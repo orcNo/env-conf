@@ -1,0 +1,18 @@
+#
+FILE_PATH="/etc/os-release"
+while IFS= read -r line
+do
+	#echo "get line: ${line}"
+	NAME=`expr "${line}" : '^NAME="\([^"]*\)"'`
+	if [ -n "${NAME}" ]; then
+		echo "${NAME}"
+		break
+	fi
+	#if [[ "${line}" =~ ^NAME=\"[^\"]*\" ]]; then
+	#	echo "get name"
+	#fi
+done < "${FILE_PATH}"
+
+alias ls="ls --color"
+alias psy="sudo pacman -Syu"
+alias bmake="bear -- make -j4"

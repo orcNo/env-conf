@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rofi -show drun \
+  -location 7 -yoffset -30 -xoffset 0 -width 30

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+MENU="$(rofi -sep "|" -dmenu -i -p "電源菜單" -location 5 -yoffset -30 -xoffset 0 -width 15 -hide-scrollbar -line-padding 4 -padding 10 -lines 5 <<< "鎖定|退出|休眠|重啓|關機")"
+case "$MENU" in
+  鎖定) light-locker-command -l ;;
+  退出) i3 exit ;;
+  休眠) systemctl hibernate;;
+  重啓) systemctl reboot ;;
+  關機) systemctl poweroff ;;
+esac

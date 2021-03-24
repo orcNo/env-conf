@@ -1,0 +1,4 @@
+#
+alias ls="ls --color"
+alias psy="sudo pacman -Syu"
+alias bmake="bear -- make -j4"
